@@ -18,8 +18,8 @@ def type_text(text, initial_delay=10, cpm=900, period_pause=60):
 
             if period_count == 2:
                 print(f"Pausing for {period_pause} seconds after two periods...")
-                time.sleep(period_pause)
-                fcfxperiod_count = 0  # Reset the period count after pausing
+                progress_bar(period_pause)  # Use the progress_bar function
+                period_count = 0  # Reset the period count after pausing
         elif char == "\n":
             pyautogui.hotkey("shift", "enter")  # Simulate a new line
         else:
@@ -36,9 +36,6 @@ def progress_bar(duration):
 
 def main():
     print("Text Typer Program")
-    print("------------------")
-    print("This program types the text you provide using keypresses.")
-    print("Make sure to switch to the desired input field or application.")
     print()
 
     user_input = input("Enter the text you want to type: ")
@@ -56,7 +53,6 @@ def main():
     except ValueError:
         print("Invalid CPM value. Using the default speed of 900 CPM.")
         cpm = 900
-
 
     type_text(user_input, initial_delay, cpm)
 
